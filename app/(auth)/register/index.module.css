@@ -1,0 +1,20 @@
+.header {
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  text-align: center;
+  color: var(--gray-3);
+}
+
+/* Mobile */
+@media (max-width: 480px) {}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 760px) {}
+
+/* Large tablet */
+@media (min-width: 761px) and (max-width: 1440px) {}
+
+/* Desktop */
+@media (min-width: 1441px) {}

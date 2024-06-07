@@ -1,0 +1,126 @@
+.btn {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none !important;
+  width: max-content;
+  height: auto;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background-color: var(--theme-primary);
+  color: var(--gray-3);
+  border: var(--border-size) solid var(--theme-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  transition: all 0.2s linear;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  background-color: var(--background-color2);
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  z-index: 999;
+  /* border-radius: 10px 10px 0 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  max-height: 80vh;
+  max-width: 1000px; */
+  overflow-y: auto;
+  /* margin: 0 auto; */
+}
+
+.content[vaul-drawer-direction="bottom"] {
+  border-radius: 0 10px 10px 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  max-height: 80vh;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.content[vaul-drawer-direction="right"],
+.content[vaul-drawer-direction="left"] {
+  top: 0;
+  bottom: 0;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  height: 100vh;
+  max-height: 100vh;
+  width: 40vw;
+  max-width: 40vw;
+}
+
+.content[vaul-drawer-direction="right"] {
+  right: 0;
+}
+
+.content[vaul-drawer-direction="left"] {
+  left: 0;
+}
+
+.bar {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  position: sticky;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--background-color2);
+}
+
+.bar::after {
+  content: '';
+  width: 3.5rem;
+  height: 0.5rem;
+  background-color: var(--border-3);
+  border-radius: 100px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 760px) {}
+
+/* Large tablet */
+@media (min-width: 761px) and (max-width: 1440px) {
+  .btn:hover {
+    opacity: 0.9;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1441px) {
+  .btn:hover {
+    opacity: 0.9;
+  }
+}

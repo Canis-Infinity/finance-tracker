@@ -1,29 +1,6 @@
-import { Providers } from './providers';
-import { ToastContainer } from 'react-toastify';
-import NextTopLoader from 'nextjs-toploader';
-import BackToTop from '@/components/BackToTop';
-import { Noto_Sans_TC } from 'next/font/google';
-import '@/styles/root.css';
-import '@/styles/global.css';
-
-const notoSansTC = Noto_Sans_TC({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-}
-
 export const metadata = {
   metadataBase: new URL('https://finance-tracker.iistw.com'),
-  title: {
-    template: '%s｜記帳 App｜Infinity 資訊',
-    default: '記帳 App｜Infinity 資訊',
-  },
+  title: '登入',
   description: '這是我自用的記帳 App',
   manifest: "/manifest.json",
   keywords: [
@@ -39,22 +16,22 @@ export const metadata = {
     telephone: true,
   },
   openGraph: {
-    title: '記帳 App｜Infinity 資訊',
+    title: '登入｜記帳 App｜Infinity 資訊',
     url: 'https://blog.iistw.com/',
-    siteName: '記帳 App｜Infinity 資訊',
+    siteName: '登入｜記帳 App｜Infinity 資訊',
     description: '這是我自用的記帳 App',
     type: 'website',
     locale: 'zh_TW',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '記帳 App｜Infinity 資訊',
+    title: '登入｜記帳 App｜Infinity 資訊',
     description: '這是我自用的記帳 App',
     creator: "@iistw22788",
     siteId: '@iistw22788',
   },
   appleWebApp: {
-    title: '記帳 App｜Infinity 資訊',
+    title: '登入｜記帳 App｜Infinity 資訊',
     statusBarStyle: 'black-translucent',
   },
   icons: {
@@ -99,15 +76,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-Hant" suppressHydrationWarning>
-      <body className={notoSansTC.className}>
-        <Providers>
-          <ToastContainer />
-          <NextTopLoader />
-          {children}
-          <BackToTop />
-        </Providers>
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }
