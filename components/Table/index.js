@@ -84,46 +84,6 @@ export default function Table({
             </tr>
           ))
         }
-        {/* {data.map((row, index) => (
-          <tr key={index} onClick={() => handleClick(row)}>
-            {columns.header.map((column, index) => {
-              const key = column.key;
-              const alignment = config?.style?.body[key]?.alignment || 'start';
-              const value = config?.style?.body[key]?.format
-                ? config?.style?.body[key]?.format(row[key])
-                : row[key];
-              const color = config?.style?.body[key]?.color
-                ? config?.style?.body[key]?.color(row[key])
-                : '';
-              const isBadge = config?.style?.body[key]?.isBadge
-                ? config?.style?.body[key]?.isBadge(row[key])
-                : '';
-              const badgeClassName = isBadge?.className || '';
-              return (
-                <td
-                  key={index}
-                  className={clsx({
-                    [styles[alignment]]: alignment,
-                    [styles[color]]: color,
-                  })}
-                >
-                  {isBadge ? (
-                    <div
-                      className={clsx(styles.badge, {
-                        [styles[badgeClassName]]: badgeClassName,
-                      })}
-                    >
-                      {isBadge.icon}
-                      {value}
-                    </div>
-                  ) : (
-                    value
-                  )}
-                </td>
-              );
-            })}
-          </tr>
-        ))} */}
       </tbody>
       {
         isLoading ? null : (

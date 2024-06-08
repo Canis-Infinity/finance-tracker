@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import RecordsWrapper from '@/components/RecordsWrapper';
 import dayjs from 'dayjs';
+import DataStatus from '@/components/DataStatus';
 
 export default function Records() {
   const data = [
@@ -44,7 +46,9 @@ export default function Records() {
       <hgroup>
         <h1>收支記錄</h1>
       </hgroup>
-      <RecordsWrapper defaultData={data} defaultDate={{ from: pastMonth, to: curDate, month: curMonth }} />
+      <Suspense fallback={<DataStatus content="載入中..." type="loading" />}>
+        <RecordsWrapper defaultData={data} defaultDate={{ from: pastMonth, to: curDate, month: curMonth }} />
+      </Suspense>
     </>
   );
 }

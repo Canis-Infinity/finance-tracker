@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo } from 'react';
 import clsx from 'clsx';
 import styles from './index.module.css';
 import Table from '@/components/Table';
-import Filter from '@/components/Filter';
 import { getTypeData } from '@/utils/getTypeData';
 import { getSortedData } from '@/utils/getSortedData';
 
@@ -92,10 +91,9 @@ const config = {
 
 const defaultSort = { key: 'type', order: 'desc' };
 
-export default function RecordsWrapper({ defaultData, defaultDate }) {
+export default function HomeTableWrapper({ defaultData }) {
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({ key: 'type', order: 'desc' });
-  const [date, setDate] = useState(defaultDate);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -103,8 +101,6 @@ export default function RecordsWrapper({ defaultData, defaultDate }) {
     setData(defaultData);
     setIsLoading(false);
   }, [defaultData]);
-
-  const handleClick = () => {};
 
   const handleSort = (key) => {
     setSort(prev => ({
@@ -115,22 +111,12 @@ export default function RecordsWrapper({ defaultData, defaultDate }) {
 
   const sortedData = useMemo(() => getSortedData(data, sort.key, sort.order), [data, sort]);
 
-  const handleDateChange = (value) => {
-    setDate(value);
-  };
-
-  useEffect(() => {
-    // console.log(date);
-  }, [date]);
-
   return (
     <>
-      <Filter defaultDate={date} handleDateChange={handleDateChange} />
       <Table
         data={sortedData}
         columns={columns}
         config={{ ...config, sort }}
-        handleClick={handleClick}
         handleSort={handleSort}
         isLoading={isLoading}
       />
