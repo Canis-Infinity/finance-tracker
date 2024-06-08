@@ -32,6 +32,10 @@
   transition: background-color 0.2s linear;
 }
 
+.table.pointer .tbody tr {
+  cursor: pointer;
+}
+
 .tbody tr:not(.disableHover):active,
 .tbody tr:not(.disableHover):has(td:active) {
   opacity: 0.8;

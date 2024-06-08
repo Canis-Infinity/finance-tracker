@@ -44,6 +44,7 @@ const columns = {
 };
 
 const config = {
+  clickable: false,
   style: {
     body: {
       type: {

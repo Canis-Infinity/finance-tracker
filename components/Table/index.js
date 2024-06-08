@@ -18,7 +18,9 @@ export default function Table({
   isLoading,
 }) {
   return (
-    <table className={clsx(styles.table, robotoMono.className)}>
+    <table className={clsx(styles.table, robotoMono.className, {
+      [styles.pointer]: config.clickable,
+    })}>
       <thead className={styles.thead}>
         <tr>
           {columns.header.map((column, index) => (

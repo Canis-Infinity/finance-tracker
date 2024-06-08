@@ -39,6 +39,7 @@ const columns = {
 };
 
 const config = {
+  clickable: true,
   style: {
     body: {
       type: {
