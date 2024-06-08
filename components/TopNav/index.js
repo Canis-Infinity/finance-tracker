@@ -70,17 +70,6 @@ export default function TopNav() {
             ))
           }
         </ul>
-        <Tippy
-          content={`點擊進入${navItems[3].title}`}
-          placement={'bottom'}
-        >
-          <Link href={navItems[3].url} className={clsx(styles.avatar, {[styles.active]: pathname === navItems[3].url})} data-desktop>
-            <Image src={'/avatar/avatar-1.png'} width={35} height={35} alt='avatar' />
-          </Link>
-        </Tippy>
-        <Link href={navItems[3].url} className={clsx(styles.avatar, {[styles.active]: pathname === navItems[3].url})} data-mobile>
-          <Image src={'/avatar/avatar-1.png'} width={35} height={35} alt='avatar' />
-        </Link>
         <Button
           isIconType={true}
           onClick={handleThemeToggle}
@@ -107,12 +96,17 @@ export default function TopNav() {
             placement: 'bottom',
           }}
         />
-        {/* <Button
-          isIconType={true}
-          icon={<CgLogOut />}
-          onClick={handleLogout}
-          mobile={true}
-        /> */}
+        <Tippy
+          content={`點擊進入${navItems[3].title}`}
+          placement={'bottom'}
+        >
+          <Link href={navItems[3].url} className={clsx(styles.avatar, {[styles.active]: pathname === navItems[3].url})} data-desktop>
+            <Image src={'/avatar/avatar-1.png'} width={35} height={35} alt='avatar' />
+          </Link>
+        </Tippy>
+        <Link href={navItems[3].url} className={clsx(styles.avatar, {[styles.active]: pathname === navItems[3].url})} data-mobile>
+          <Image src={'/avatar/avatar-1.png'} width={35} height={35} alt='avatar' />
+        </Link>
       </nav>
     </div>
   )

@@ -121,20 +121,12 @@
   .wrapper {
     padding: 1.5rem var(--mobile-padding) 1.5rem var(--mobile-padding);
   }
-
-  .nav {
-    flex-direction: row-reverse;
-  }
 }
 
 /* Tablet */
 @media (min-width: 481px) and (max-width: 760px) {
   .wrapper {
     padding: 1.5rem var(--tablet-padding) 1.5rem var(--tablet-padding);
-  }
-
-  .nav {
-    flex-direction: row-reverse;
   }
 }
 
