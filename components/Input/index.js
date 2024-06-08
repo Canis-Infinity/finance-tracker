@@ -25,6 +25,8 @@ export default function Input({
   size,
   mobile,
   desktop,
+  min,
+  max,
 }) {
   const [cursor, setCursor] = useState('pointer');
 
@@ -70,6 +72,8 @@ export default function Input({
         onCompositionStart={onCompositionStart}
         onCompositionEnd={onCompositionEnd}
         defaultValue={defaultValue}
+        min={min}
+        max={max}
       />
       {kbd && <kbd>{kbd}</kbd>}
       {right && <div className={styles.right} onClick={passWordToggle} style={passWordToggle ? {pointerEvents: 'all'} : {}}>{right}</div>}

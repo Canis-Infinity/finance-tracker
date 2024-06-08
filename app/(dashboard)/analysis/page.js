@@ -2,7 +2,7 @@ export default function Analysis() {
   return (
     <>
       <hgroup>
-        <h1>settings</h1>
+        <h1>收支分析</h1>
       </hgroup>
     </>
   );

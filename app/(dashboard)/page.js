@@ -9,16 +9,18 @@ import CustomDrawer from '@/components/CustomDrawer';
 
 export default function Home() {
   return (
-    <Drawer.Root direction='right'>
+    <Drawer.Root direction="right">
       <hgroup>
-        <h1>home</h1>
-        <Drawer.Trigger className={clsx(vaulStyles.btn, styles.btn)} data-desktop>
-          <RiAddLargeLine />新增記錄
+        <h1>首頁</h1>
+        <Drawer.Trigger
+          className={clsx(vaulStyles.btn, styles.btn)}
+          data-desktop
+        >
+          <RiAddLargeLine />
+          新增記錄
         </Drawer.Trigger>
       </hgroup>
-      <CustomDrawer>
-        {/* content */}111
-      </CustomDrawer>
+      <CustomDrawer>{/* content */}111</CustomDrawer>
     </Drawer.Root>
   );
 }

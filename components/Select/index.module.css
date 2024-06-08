@@ -6,12 +6,12 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
   border: var(--border-size) solid var(--border);
   border-radius: 1rem;
   transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .wrapper.rounded {
@@ -45,10 +45,18 @@
   width: max-content;
   height: auto;
   display: flex;
-  position: relative;
+  position: absolute;
   justify-content: center;
   align-items: center;
   pointer-events: none;
+}
+
+.left {
+  left: 0.5rem;
+}
+
+.right {
+  right: 0.5rem;
 }
 
 .wrapper:focus-within .left,
@@ -72,7 +80,7 @@
   transform-origin: right center;
 }
 
-.input {
+.select {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -84,6 +92,10 @@
   line-height: 1.5;
   background-color: transparent;
   color: var(--font-color);
+  background-color: var(--background-color);
+  padding: 0.32rem 0.9rem;
+  cursor: pointer;
+  font-family: monospace;
 }
 
 /* Mobile */

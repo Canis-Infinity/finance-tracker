@@ -25,7 +25,7 @@ export const metadata = {
     default: '記帳 App｜Infinity 資訊',
   },
   description: '這是我自用的記帳 App',
-  manifest: "/manifest.json",
+  manifest: "https://finance-tracker.iistw.com/manifest.json",
   keywords: [
     '記帳 App｜Infinity 資訊',
     '記帳 App',

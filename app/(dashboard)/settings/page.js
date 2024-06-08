@@ -2,7 +2,7 @@ export default function Settings() {
   return (
     <>
       <hgroup>
-        <h1>settings</h1>
+        <h1>個人設定</h1>
       </hgroup>
     </>
   );

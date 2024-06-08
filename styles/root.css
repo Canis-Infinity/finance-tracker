@@ -76,6 +76,38 @@
   --tr-even: var(--gray-2);
   --tr-even-hover: var(--gray-3);
   --table-border: var(--border);
+
+  /* Badge */
+  --food-bg: hsl(88, 50%, 90%);
+  --food-text: hsl(88, 50%, 40%);
+  --traffic-bg: hsl(200, 15%, 90%);
+  --traffic-text: hsl(200, 15%, 40%);
+  --shopping-bg: hsl(65, 69%, 90%);
+  --shopping-text: hsl(65, 69%, 40%);
+  --entertainment-bg: hsl(291, 47%, 90%);
+  --entertainment-text: hsl(291, 47%, 40%);
+  --travel-bg: hsl(199, 92%, 90%);
+  --travel-text: hsl(199, 92%, 40%);
+  --medical-bg: hsl(354, 100%, 90%);
+  --medical-text: hsl(354, 100%, 40%);
+  --insurance-bg: hsl(175, 41%, 90%);
+  --insurance-text: hsl(175, 41%, 40%);
+  --tuition-bg: hsl(16, 16%, 90%);
+  --tuition-text: hsl(16, 16%, 40%);
+  --rent-bg: hsl(36, 100%, 90%);
+  --rent-text: hsl(36, 100%, 40%);
+  --internet-bg: hsl(199, 92%, 90%);
+  --internet-text: hsl(199, 92%, 40%);
+  --phone-bg: hsl(187, 71%, 90%);
+  --phone-text: hsl(187, 71%, 40%);
+  --sports-bg: hsl(122, 38%, 90%);
+  --sports-text: hsl(122, 38%, 40%);
+  --salary-bg: hsl(45, 100%, 90%);
+  --salary-text: hsl(45, 100%, 40%);
+  --bonus-bg: hsl(14, 100%, 90%);
+  --bonus-text: hsl(14, 100%, 40%);
+  --other-bg: hsl(0, 0%, 90%);
+  --other-text: hsl(0, 0%, 40%);
 }
 
 [data-theme='light'] {
@@ -104,6 +136,38 @@
   --tr-even: var(--gray-2);
   --tr-even-hover: var(--gray-3);
   --table-border: var(--border);
+
+  /* Badge */
+  --food-bg: hsl(88, 50%, 90%);
+  --food-text: hsl(88, 50%, 40%);
+  --traffic-bg: hsl(200, 15%, 90%);
+  --traffic-text: hsl(200, 15%, 40%);
+  --shopping-bg: hsl(65, 69%, 90%);
+  --shopping-text: hsl(65, 69%, 40%);
+  --entertainment-bg: hsl(291, 47%, 90%);
+  --entertainment-text: hsl(291, 47%, 40%);
+  --travel-bg: hsl(199, 92%, 90%);
+  --travel-text: hsl(199, 92%, 40%);
+  --medical-bg: hsl(354, 100%, 90%);
+  --medical-text: hsl(354, 100%, 40%);
+  --insurance-bg: hsl(175, 41%, 90%);
+  --insurance-text: hsl(175, 41%, 40%);
+  --tuition-bg: hsl(16, 16%, 90%);
+  --tuition-text: hsl(16, 16%, 40%);
+  --rent-bg: hsl(36, 100%, 90%);
+  --rent-text: hsl(36, 100%, 40%);
+  --internet-bg: hsl(199, 92%, 90%);
+  --internet-text: hsl(199, 92%, 40%);
+  --phone-bg: hsl(187, 71%, 90%);
+  --phone-text: hsl(187, 71%, 40%);
+  --sports-bg: hsl(122, 38%, 90%);
+  --sports-text: hsl(122, 38%, 40%);
+  --salary-bg: hsl(45, 100%, 90%);
+  --salary-text: hsl(45, 100%, 40%);
+  --bonus-bg: hsl(14, 100%, 90%);
+  --bonus-text: hsl(14, 100%, 40%);
+  --other-bg: hsl(0, 0%, 90%);
+  --other-text: hsl(0, 0%, 40%);
 }
 
 [data-theme='dark'] {
@@ -131,4 +195,36 @@
   --tr-even: var(--gray-10);
   --tr-even-hover: var(--gray-9);
   --table-border: var(--border);
+
+  /* Badge */
+  --food-bg: hsl(88, 50%, 20%);
+  --food-text: hsl(88, 50%, 80%);
+  --traffic-bg: hsl(200, 15%, 20%);
+  --traffic-text: hsl(200, 15%, 80%);
+  --shopping-bg: hsl(65, 69%, 20%);
+  --shopping-text: hsl(65, 69%, 80%);
+  --entertainment-bg: hsl(291, 47%, 20%);
+  --entertainment-text: hsl(291, 47%, 80%);
+  --travel-bg: hsl(199, 92%, 20%);
+  --travel-text: hsl(199, 92%, 80%);
+  --medical-bg: hsl(354, 100%, 20%);
+  --medical-text: hsl(354, 100%, 80%);
+  --insurance-bg: hsl(175, 41%, 20%);
+  --insurance-text: hsl(175, 41%, 80%);
+  --tuition-bg: hsl(16, 16%, 20%);
+  --tuition-text: hsl(16, 16%, 80%);
+  --rent-bg: hsl(36, 100%, 20%);
+  --rent-text: hsl(36, 100%, 80%);
+  --internet-bg: hsl(199, 92%, 20%);
+  --internet-text: hsl(199, 92%, 80%);
+  --phone-bg: hsl(187, 71%, 20%);
+  --phone-text: hsl(187, 71%, 80%);
+  --sports-bg: hsl(122, 38%, 20%);
+  --sports-text: hsl(122, 38%, 80%);
+  --salary-bg: hsl(45, 100%, 20%);
+  --salary-text: hsl(45, 100%, 80%);
+  --bonus-bg: hsl(14, 100%, 20%);
+  --bonus-text: hsl(14, 100%, 80%);
+  --other-bg: hsl(0, 0%, 20%);
+  --other-text: hsl(0, 0%, 80%);
 }
