@@ -11,7 +11,7 @@
 .wrapper::after {
   content: '';
   backdrop-filter: blur(10px);
-  background-color: var(--background-color)'B3';
+  background-color: var(--background-color-30);
   position: absolute;
   width: 100%;
   height: 100%;

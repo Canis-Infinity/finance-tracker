@@ -35,6 +35,8 @@
   --gray-11: #1f1f1f;
   --gray-12: #141414;
   --gray-13: #000000;
+  --gray-3-30: #f5f5f5B3;
+  --gray-12-30: #141414B3;
 
   --red: #A1414C;
   --red-secondary: #ff7875;
@@ -52,6 +54,7 @@
   --yellow-secondary: #fff566;
 
   --background-color: var(--gray-3);
+  --background-color-30: var(--gray-3-30);
   --background-color2: var(--gray-1);
   --hover: var(--gray-5);
   --hover-2: var(--gray-2);
@@ -112,6 +115,7 @@
 
 [data-theme='light'] {
   --background-color: var(--gray-3);
+  --background-color-30: var(--gray-3-30);
   --background-color2: var(--gray-1);
   --hover: var(--gray-5);
   --hover-2: var(--gray-2);
@@ -172,6 +176,7 @@
 
 [data-theme='dark'] {
   --background-color: var(--gray-12);
+  --background-color-30: var(--gray-12-30);
   --background-color2: var(--gray-11);
   --hover: var(--gray-10);
   --border: var(--gray-10);

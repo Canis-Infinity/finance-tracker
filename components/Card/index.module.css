@@ -3,9 +3,6 @@
   display: grid;
   gap: 1.5rem;
   color: var(--gray-3);
-  /* background: linear-gradient(148deg, var(--theme-8) 0%, var(--theme-6) 100%);
-  border-radius: 1rem;
-  overflow: hidden; */
 }
 
 .card {
