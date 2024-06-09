@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
@@ -16,6 +16,9 @@ export default function RegisterForm() {
   };
 
   const [btnDisabled, setBtnDisabled] = useState(false);
+
+  const formRef = useRef(null);
+  const submitToast = useRef(null);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -45,7 +48,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <form action="#" method="post" className={styles.form}>
+    <form action="#" method="post" className={styles.form} ref={formRef}>
       <div className={formStyles.field}>
           <div className={formStyles.fieldTitle}>帳號</div>
           <Input

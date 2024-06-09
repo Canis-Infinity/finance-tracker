@@ -151,11 +151,13 @@ export default function Home() {
     const income = data.filter((item) => item.price > 0);
     setCardData([
       {
-        type: '本日支出',
+        type: 'expense',
+        content: '本日支出',
         total: expense.reduce((acc, cur) => acc + cur.price, 0) * -1,
       },
       {
-        type: '本日收入',
+        type: 'income',
+        content: '本日收入',
         total: income.reduce((acc, cur) => acc + cur.price, 0),
       },
     ]);
