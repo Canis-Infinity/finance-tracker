@@ -1,7 +1,8 @@
 import styles from './index.module.css';
 import { Roboto_Mono } from 'next/font/google';
 import DataStatus from '@/components/DataStatus';
-import { PiTrendDownBold, PiTrendUpBold } from 'react-icons/pi';
+import CountUp from 'react-countup';
+import { PiChartLineDownBold, PiChartLineUpBold } from 'react-icons/pi';
 
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
@@ -9,8 +10,8 @@ const robotoMono = Roboto_Mono({
 });
 
 const cardIcons = {
-  expense: <PiTrendDownBold />,
-  income: <PiTrendUpBold />,
+  expense: <PiChartLineDownBold />,
+  income: <PiChartLineUpBold />,
 };
 
 export default function Card({ data, isLoading }) {
@@ -26,7 +27,12 @@ export default function Card({ data, isLoading }) {
           <div className={styles.card} key={item.type}>
             <h3>{item.content}</h3>
             <span className={robotoMono.className}>
-              {new Intl.NumberFormat().format(item.total)}
+              <CountUp
+                end={item.total || 0}
+                separator=","
+                useGrouping={true}
+                enableScrollSpy={true}
+              />
             </span>
             {cardIcons[item.type]}
           </div>

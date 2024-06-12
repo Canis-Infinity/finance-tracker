@@ -38,6 +38,7 @@ const columns = {
 };
 
 const config = {
+  clickable: true,
   style: {
     body: {
       type: {
@@ -105,6 +106,8 @@ export default function HomeTableWrapper({ defaultData }) {
     setIsLoading(false);
   }, [defaultData]);
 
+  const handleClick = () => {};
+
   const handleSort = (key) => {
     setSort(prev => ({
       key: key,
@@ -120,6 +123,7 @@ export default function HomeTableWrapper({ defaultData }) {
         data={sortedData}
         columns={columns}
         config={{ ...config, sort }}
+        handleClick={handleClick}
         handleSort={handleSort}
         isLoading={isLoading}
       />

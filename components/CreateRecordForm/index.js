@@ -1,37 +1,58 @@
 'use client';
 import { useState, useRef } from 'react';
-import Link from 'next/link';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
+import Select from '@/components/Select';
+import RadioInput from '@/components/RadioInput';
 import styles from './index.module.css';
 import formStyles from '@/styles/form.module.css';
-import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import { RiInformationFill } from 'react-icons/ri';
+import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from 'next-themes';
+import { RiExpandUpDownFill } from 'react-icons/ri';
+import { getCustomeTypeData } from '@/utils/getTypeData';
 import { defaultProps } from '@/utils/getToastProps';
 
-export default function RegisterForm() {
+const RadioWrapper = ({ options, name }) => {
+  return (
+    <div className={styles.radioWrapper}>
+      {options.map((option) => {
+        const content = (
+          <>
+            {option.icon}
+            {option.content}
+          </>
+        );
+        return (
+          <RadioInput
+            key={option.type}
+            type={option.type}
+            name={name}
+            content={content}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+export default function CreateRecordForm({ onOpenChange }) {
   const { theme } = useTheme();
-
-  const [passwordType, setPasswordType] = useState('password');
-
-  const handlePasswordToggle = () => {
-    setPasswordType(passwordType === 'password' ? 'text' : 'password');
-  };
 
   const [btnDisabled, setBtnDisabled] = useState(false);
 
   const formRef = useRef(null);
   const submitToast = useRef(null);
 
-  const handleRegister = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setBtnDisabled(true);
     submitToast.current = toast.loading('登入中', { ...defaultProps, theme });
     const formData = new FormData(formRef.current);
     const data = Object.fromEntries(formData);
+    console.log('data', data);
+    // onOpenChange(false);
     // axios
     //   .post(`${process.env.baseUrl}/api/finance-tracker/login`, formData)
     //   .then((res) => {
@@ -70,69 +91,79 @@ export default function RegisterForm() {
   };
 
   return (
-    <form action="#" method="post" className={styles.form} ref={formRef}>
+    <form
+      action="#"
+      method="post"
+      className={styles.form}
+      onSubmit={handleSubmit}
+      ref={formRef}
+    >
       <div className={formStyles.field}>
-        <div className={formStyles.fieldTitle}>帳號</div>
+        <div className={formStyles.fieldTitle}>日期</div>
         <Input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="填寫您的帳號"
+          type="date"
+          name="date"
+          id="date"
+          defaultValue={dayjs().format('YYYY-MM-DD')}
           size="large"
           flex={true}
+          color="third"
+        />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle}>金額</div>
+        <Input
+          type="number"
+          name="price"
+          id="price"
+          placeholder="請輸入金額"
+          size="large"
+          flex={true}
+          left="NT$"
+          color="third"
+        />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle}>類型</div>
+        <Select
+          name="category"
+          id="category"
+          options={[
+            { value: 'income', label: '收入' },
+            { value: 'expense', label: '支出' },
+          ]}
+          right={<RiExpandUpDownFill />}
+          flex={true}
+        />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle}>類別</div>
+        <RadioWrapper
+          name="type"
+          options={getCustomeTypeData(['type', 'content', 'icon'])}
         />
       </div>
       <div className={formStyles.field}>
         <div className={formStyles.fieldTitle} data-optional="選填">
-          信箱
+          備註
         </div>
         <Input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="填寫您的信箱"
-          size="large"
-          flex={true}
-        />
-      </div>
-      <div className={formStyles.field}>
-        <div className={formStyles.fieldTitle}>密碼</div>
-        <Input
-          type={passwordType}
-          name="password"
-          id="password"
-          placeholder="輸入您的密碼"
-          size="large"
-          flex={true}
-          right={passwordType === 'password' ? <IoMdEye /> : <IoMdEyeOff />}
-          passWordToggle={handlePasswordToggle}
-        />
-      </div>
-      <div className={formStyles.field}>
-        <div className={formStyles.fieldTitle}>暱稱</div>
-        <Input
           type="text"
-          name="nickname"
-          id="nickname"
-          placeholder="填寫您的暱稱"
+          name="comment"
+          id="comment"
+          placeholder="請輸入備註"
           size="large"
           flex={true}
+          color="third"
         />
       </div>
-      <p>
-        已經有帳號？請前往
-        <Link href="/login" className="link">
-          登入
-        </Link>
-        ！
-      </p>
       <div className={formStyles.actions}>
         <Button
           color="primary"
-          content={btnDisabled ? '註冊中' : '註冊'}
+          content={btnDisabled ? '新增中' : '新增'}
           size="large"
           width="relaxed"
-          onClick={handleRegister}
+          onClick={handleSubmit}
           disabled={btnDisabled}
           flex={true}
         />

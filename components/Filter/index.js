@@ -35,9 +35,6 @@ export default function Filter({ activeTab, tabs, handleTabsClick, defaultDate, 
       {activeTab === 'month' && <Input type="month" name="month" id="month" defaultValue={defaultDate.month} />}
       {activeTab === 'year' && <Select type="year" name="year" id="year" options={years} right={<RiExpandUpDownFill />} />}
       {activeTab === 'custom' && <DateRangePicker date={defaultDate} onChange={handleDateChange} />}
-      {/* <DateRangePicker date={defaultDate} onChange={handleDateChange} />
-      <Input type="month" name="month" id="month" />
-      <Select type="year" name="year" id="year" options={years} right={<RiExpandUpDownFill />} /> */}
     </div>
   );
 }

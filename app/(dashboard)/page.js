@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 import { RiAddLargeLine } from 'react-icons/ri';
 import { Drawer } from 'vaul';
 import CustomDrawer from '@/components/CustomDrawer';
-import RecordForm from '@/components/RecordForm';
+import CreateRecordForm from '@/components/CreateRecordForm';
 
 const columns = {
   header: [
@@ -101,6 +101,7 @@ const config = {
 const defaultSort = { key: 'type', order: 'desc' };
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
   const [cardData, setCardData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [sort, setSort] = useState({ key: 'type', order: 'desc' });
@@ -167,7 +168,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Drawer.Root direction="right">
+    <Drawer.Root open={open} onOpenChange={setOpen} direction="right">
       <hgroup>
         <h1>首頁</h1>
         <Drawer.Trigger
@@ -183,7 +184,7 @@ export default function Home() {
         <HomeTableWrapper defaultData={tableData} defaultDate={date} />
         <CustomDrawer>
           <h2 className={vaulStyles.title}>新增記錄</h2>
-          <RecordForm />
+          <CreateRecordForm onOpenChange={setOpen} />
         </CustomDrawer>
       </Suspense>
     </Drawer.Root>

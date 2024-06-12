@@ -8,8 +8,12 @@ import formStyles from '@/styles/form.module.css';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTheme } from 'next-themes';
+import { defaultProps } from '@/utils/getToastProps';
 
 export default function LoginForm() {
+  const { theme } = useTheme();
+
   const [passwordType, setPasswordType] = useState('password');
 
   const handlePasswordToggle = () => {
@@ -24,7 +28,7 @@ export default function LoginForm() {
   const handleLogin = (event) => {
     event.preventDefault();
     setBtnDisabled(true);
-    submitToast.current = toast.loading('登入中', { ...defaultProps });
+    submitToast.current = toast.loading('登入中', { ...defaultProps, theme });
     const formData = new FormData(formRef.current);
     const data = Object.fromEntries(formData);
     // axios
