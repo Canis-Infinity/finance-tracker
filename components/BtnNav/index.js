@@ -1,24 +1,29 @@
 'use client';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
+import Button from '@/components/Button';
 import { usePathname, useRouter } from 'next/navigation';
 import clsx from 'clsx';
 import styles from './index.module.css';
-import vaulStyles from '@/styles/vaul.module.css';
 import { navItems } from '@/utils/getNavItems';
 import { RiAddLargeLine } from 'react-icons/ri';
-import { Drawer } from 'vaul';
-import CustomDrawer from '@/components/CustomDrawer';
+import Modal from '@/components/Modal';
 import CreateRecordForm from '@/components/CreateRecordForm';
 
 export default function BtnNav() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModal = () => {
+    document.querySelector('html').classList.toggle('overflowHidden');
+    setModalOpen((prev) => !prev);
+  };
 
   return (
-    <Drawer.Root open={open} onOpenChange={setOpen}>
+    <>
       <div className={styles.wrapper} data-mobile>
         <nav className={styles.nav}>
           <ul>
@@ -33,9 +38,13 @@ export default function BtnNav() {
                 </Link>
               </li>
             ))}
-            <Drawer.Trigger className={vaulStyles.btn}>
-              <RiAddLargeLine />
-            </Drawer.Trigger>
+            <Button
+              color="primary"
+              icon={<RiAddLargeLine />}
+              size="large"
+              width="relaxed"
+              onClick={handleModal}
+            />
             {navItems.slice(2, navItems.length).map((item) => (
               <li
                 key={item.url}
@@ -50,10 +59,13 @@ export default function BtnNav() {
           </ul>
         </nav>
       </div>
-      <CustomDrawer bar={true}>
-        <h2 className={vaulStyles.title}>新增記錄</h2>
-        <CreateRecordForm onOpenChange={setOpen} />
-      </CustomDrawer>
-    </Drawer.Root>
+      {modalOpen &&
+        createPortal(
+          <Modal title="新增記錄" size="medium" close={handleModal}>
+            <CreateRecordForm onOpenChange={handleModal} />
+          </Modal>,
+          document.body
+        )}
+    </>
   );
 }

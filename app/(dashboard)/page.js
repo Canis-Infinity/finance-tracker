@@ -1,16 +1,15 @@
 'use client';
 import { useState, useEffect, useMemo, Suspense } from 'react';
+import { createPortal } from 'react-dom';
 import Button from '@/components/Button';
 import clsx from 'clsx';
 import styles from './index.module.css';
-import vaulStyles from '@/styles/vaul.module.css';
 import DataStatus from '@/components/DataStatus';
 import Card from '@/components/Card';
 import HomeTableWrapper from '@/components/HomeTableWrapper';
 import dayjs from 'dayjs';
 import { RiAddLargeLine } from 'react-icons/ri';
-import { Drawer } from 'vaul';
-import CustomDrawer from '@/components/CustomDrawer';
+import Modal from '@/components/Modal';
 import CreateRecordForm from '@/components/CreateRecordForm';
 
 const columns = {
@@ -101,7 +100,7 @@ const config = {
 const defaultSort = { key: 'type', order: 'desc' };
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [cardData, setCardData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [sort, setSort] = useState({ key: 'type', order: 'desc' });
@@ -167,26 +166,35 @@ export default function Home() {
     setIsLoading(false);
   }, []);
 
+  const handleModal = () => {
+    document.querySelector('html').classList.toggle('overflowHidden');
+    setModalOpen((prev) => !prev);
+  };
+
   return (
-    <Drawer.Root open={open} onOpenChange={setOpen} direction="right">
+    <>
       <hgroup>
         <h1>首頁</h1>
-        <Drawer.Trigger
-          className={clsx(vaulStyles.btn, styles.btn)}
-          data-desktop
-        >
-          <RiAddLargeLine />
-          新增記錄
-        </Drawer.Trigger>
+        <Button
+          color="primary"
+          icon={<RiAddLargeLine />}
+          content="新增記錄"
+          size="large"
+          width="relaxed"
+          onClick={handleModal}
+        />
       </hgroup>
       <Suspense fallback={<DataStatus content="載入中..." type="loading" />}>
         <Card data={cardData} isLoading={isLoading} />
         <HomeTableWrapper defaultData={tableData} defaultDate={date} />
-        <CustomDrawer>
-          <h2 className={vaulStyles.title}>新增記錄</h2>
-          <CreateRecordForm onOpenChange={setOpen} />
-        </CustomDrawer>
       </Suspense>
-    </Drawer.Root>
+      {modalOpen &&
+        createPortal(
+          <Modal title="新增記錄" size="medium" close={handleModal}>
+            <CreateRecordForm onOpenChange={handleModal} />
+          </Modal>,
+          document.body
+        )}
+    </>
   );
 }
