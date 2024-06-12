@@ -9,11 +9,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Setting() {
-  const { theme, setTheme } = useTheme();
-
-  const handleThemeToggle = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  const { theme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
 

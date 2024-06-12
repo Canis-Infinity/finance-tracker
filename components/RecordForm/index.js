@@ -1,27 +1,35 @@
 'use client';
 import { useState, useRef } from 'react';
-import Link from 'next/link';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
+import RadioInput from '@/components/RadioInput';
 import styles from './index.module.css';
 import formStyles from '@/styles/form.module.css';
-import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getCustomeTypeData } from '@/utils/getTypeData';
 
-export default function LoginForm() {
-  const [passwordType, setPasswordType] = useState('password');
+const RadioWrapper = ({ options, name }) => {
+  return (
+    <div className={styles.radioWrapper}>
+      {options.map((option) => {
+        const content = <>
+          {option.icon}
+          {option.content}
+        </>;
+        return <RadioInput key={option.type} type={option.type} name={name} content={content} />
+      })}
+    </div>
+  );
+};
 
-  const handlePasswordToggle = () => {
-    setPasswordType(passwordType === 'password' ? 'text' : 'password');
-  };
-
+export default function RecordForm() {
   const [btnDisabled, setBtnDisabled] = useState(false);
 
-  const formRef = useRef(null);
   const submitToast = useRef(null);
 
-  const handleLogin = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setBtnDisabled(true);
     submitToast.current = toast.loading('登入中', { ...defaultProps });
@@ -65,45 +73,63 @@ export default function LoginForm() {
   };
 
   return (
-    <form action="#" method="post" className={styles.form} ref={formRef}>
+    <form action="#" method="post" className={styles.form}>
       <div className={formStyles.field}>
-        <div className={formStyles.fieldTitle}>帳號</div>
+        <div className={formStyles.fieldTitle}>日期</div>
+        <Input
+          type="date"
+          name="date"
+          id="date"
+          defaultValue={dayjs().format('YYYY-MM-DD')}
+          size="large"
+          flex={true}
+        />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle}>金額</div>
+        <Input
+          type="number"
+          name="price"
+          id="price"
+          placeholder="請輸入金額"
+          size="large"
+          flex={true}
+          left="NT$"
+        />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle}>類型</div>
         <Input
           type="text"
-          name="username"
-          id="username"
-          placeholder="填寫您的帳號"
+          name="comment"
+          id="comment"
+          placeholder="請輸入備註"
           size="large"
           flex={true}
         />
       </div>
       <div className={formStyles.field}>
-        <div className={formStyles.fieldTitle}>密碼</div>
+        <div className={formStyles.fieldTitle}>類別</div>
+        <RadioWrapper name="item" options={getCustomeTypeData(['type', 'content', 'icon'])} />
+      </div>
+      <div className={formStyles.field}>
+        <div className={formStyles.fieldTitle} data-optional="選填">備註</div>
         <Input
-          type={passwordType}
-          name="password"
-          id="password"
-          placeholder="輸入您的密碼"
+          type="text"
+          name="comment"
+          id="comment"
+          placeholder="請輸入備註"
           size="large"
           flex={true}
-          right={passwordType === 'password' ? <IoMdEye /> : <IoMdEyeOff />}
-          passWordToggle={handlePasswordToggle}
         />
       </div>
-      <p>
-        尚未註冊？請前往
-        <Link href="/register" className="link">
-          註冊
-        </Link>
-        ！
-      </p>
       <div className={formStyles.actions}>
         <Button
           color="primary"
-          content={btnDisabled ? '登入中' : '登入'}
+          content={btnDisabled ? '新增中' : '新增'}
           size="large"
           width="relaxed"
-          onClick={handleLogin}
+          onClick={handleSubmit}
           disabled={btnDisabled}
           flex={true}
         />

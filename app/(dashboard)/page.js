@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import { RiAddLargeLine } from 'react-icons/ri';
 import { Drawer } from 'vaul';
 import CustomDrawer from '@/components/CustomDrawer';
+import RecordForm from '@/components/RecordForm';
 
 const columns = {
   header: [
@@ -54,6 +55,7 @@ const config = {
           return {
             icon: data.icon,
             className: data.className,
+            content: data.content,
           };
         },
       },
@@ -116,34 +118,34 @@ export default function Home() {
     setIsLoading(true);
     const data = [
       {
-        type: '飲食',
+        type: 'food',
         amount: 63,
         price: -9600,
       },
       {
-        type: '薪資',
+        type: 'salary',
         amount: 1,
         price: 28600,
       },
       {
-        type: '交通',
+        type: 'traffic',
         amount: 3,
         price: -320,
       },
       {
-        type: '房租',
+        type: 'rent',
         amount: 22,
         price: -6500,
       },
       {
-        type: '醫療',
+        type: 'medical',
         amount: 1,
-        price: -150,
+        price: -300,
       },
       {
-        type: '其它',
+        type: 'other',
         amount: 1,
-        price: 21,
+        price: 510,
       },
     ];
     setTableData(data);
@@ -179,8 +181,11 @@ export default function Home() {
       <Suspense fallback={<DataStatus content="載入中..." type="loading" />}>
         <Card data={cardData} isLoading={isLoading} />
         <HomeTableWrapper defaultData={tableData} defaultDate={date} />
+        <CustomDrawer>
+          <h2 className={vaulStyles.title}>新增記錄</h2>
+          <RecordForm />
+        </CustomDrawer>
       </Suspense>
-      <CustomDrawer>{/* content */}111</CustomDrawer>
     </Drawer.Root>
   );
 }

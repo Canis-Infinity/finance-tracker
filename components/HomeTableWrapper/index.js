@@ -14,7 +14,7 @@ const columns = {
     },
     {
       key: 'amount',
-      title: '金額',
+      title: '數量',
     },
     {
       key: 'price',
@@ -43,11 +43,14 @@ const config = {
       type: {
         alignment: 'start',
         isBadge: (value) => {
-          const data = getTypeData(value);
+          const data = getTypeData('type', value);
           return {
             icon: data.icon,
-            className: data.className,
+            className: data.type,
           };
+        },
+        format: (value) => {
+          return getTypeData('type', value)?.content;
         },
       },
       amount: {

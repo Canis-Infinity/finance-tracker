@@ -8,6 +8,7 @@ import { navItems } from '@/utils/getNavItems';
 import { RiAddLargeLine } from 'react-icons/ri';
 import { Drawer } from 'vaul';
 import CustomDrawer from '@/components/CustomDrawer';
+import RecordForm from '@/components/RecordForm';
 
 export default function BtnNav() {
   const router = useRouter();
@@ -47,7 +48,8 @@ export default function BtnNav() {
         </nav>
       </div>
       <CustomDrawer bar={true}>
-        {/* content */}111
+        <h2 className={vaulStyles.title}>新增記錄</h2>
+        <RecordForm />
       </CustomDrawer>
     </Drawer.Root>
   );

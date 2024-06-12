@@ -8,82 +8,158 @@ import { RiSmartphoneFill, RiMoneyDollarBoxFill, RiMoneyDollarCircleFill } from 
 
 export const typeList = [
   {
-    type: '飲食',
+    type: 'food',
+    content: '飲食',
     icon: <PiHamburgerFill />,
-    className: 'food',
+    color: {
+      dark: 'hsl(88, 50%, 40%)',
+      light: 'hsl(88, 50%, 50%)',
+    }
   },
   {
-    type: '交通',
+    type: 'traffic',
+    content: '交通',
     icon: <IoCarSport />,
-    className: 'traffic',
+    color: {
+      dark: 'hsl(200, 15%, 40%)',
+      light: 'hsl(200, 15%, 50%)',
+    }
   },
   {
-    type: '購物',
+    type: 'shopping',
+    content: '購物',
     icon: <PiShoppingCartFill />,
-    className: 'shopping',
+    color: {
+      dark: 'hsl(65, 69%, 40%)',
+      light: 'hsl(65, 69%, 50%)',
+    }
   },
   {
-    type: '娛樂',
+    type: 'entertainment',
+    content: '娛樂',
     icon: <IoGameController />,
-    className: 'entertainment',
+    color: {
+      dark: 'hsl(291, 47%, 40%)',
+      light: 'hsl(291, 47%, 50%)',
+    }
   },
   {
-    type: '旅遊',
+    type: 'travel',
+    content: '旅遊',
     icon: <BsSuitcase2Fill />,
-    className: 'travel',
+    color: {
+      dark: 'hsl(199, 92%, 40%)',
+      light: 'hsl(199, 92%, 50%)',
+    }
   },
   {
-    type: '醫療',
+    type: 'medical',
+    content: '醫療',
     icon: <MdMedicalServices />,
-    className: 'medical',
+    color: {
+      dark: 'hsl(354, 100%, 40%)',
+      light: 'hsl(354, 100%, 50%)',
+    }
   },
   {
-    type: '保險',
+    type: 'insurance',
+    content: '保險',
     icon: <PiSignatureFill />,
-    className: 'insurance',
+    color: {
+      dark: 'hsl(175, 41%, 40%)',
+      light: 'hsl(175, 41%, 50%)',
+    }
   },
   {
-    type: '學費',
+    type: 'tuition',
+    content: '學費',
     icon: <HiAcademicCap />,
-    className: 'tuition',
+    color: {
+      dark: 'hsl(16, 16%, 40%)',
+      light: 'hsl(16, 16%, 50%)',
+    }
   },
   {
-    type: '房租',
+    type: 'rent',
+    content: '房租',
     icon: <TiHome />,
-    className: 'rent',
+    color: {
+      dark: 'hsl(36, 100%, 40%)',
+      light: 'hsl(36, 100%, 50%)',
+    }
   },
   {
-    type: '網路費',
+    type: 'internet',
+    content: '網路費',
     icon: <IoCellular />,
-    className: 'internet',
+    color: {
+      dark: 'hsl(199, 92%, 40%)',
+      light: 'hsl(199, 92%, 50%)',
+    }
   },
   {
-    type: '手機費',
+    type: 'phone',
+    content: '手機費',
     icon: <RiSmartphoneFill />,
-    className: 'phone',
+    color: {
+      dark: 'hsl(187, 71%, 40%)',
+      light: 'hsl(187, 71%, 50%)',
+    }
   },
   {
-    type: '運動',
+    type: 'sports',
+    content: '運動',
     icon: <IoFitness />,
-    className: 'sports',
+    color: {
+      dark: 'hsl(122, 38%, 40%)',
+      light: 'hsl(122, 38%, 50%)',
+    }
   },
   {
-    type: '薪資',
+    type: 'salary',
+    content: '薪資',
     icon: <RiMoneyDollarBoxFill />,
-    className: 'salary',
+    color: {
+      dark: 'hsl(45, 100%, 40%)',
+      light: 'hsl(45, 100%, 50%)',
+    }
   },
   {
-    type: '獎金',
+    type: 'bonus',
+    content: '獎金',
     icon: <RiMoneyDollarCircleFill />,
-    className: 'bonus',
+    color: {
+      dark: 'hsl(14, 100%, 40%)',
+      light: 'hsl(14, 100%, 50%)',
+    }
   },
   {
-    type: '其它',
+    type: 'other',
+    content: '其它',
     icon: <BsQuestionCircleFill />,
-    className: 'other',
+    color: {
+      dark: 'hsl(0, 0%, 40%)',
+      light: 'hsl(0, 0%, 50%)',
+    }
   },
 ];
 
-export const getTypeData = (type) => {
-  return typeList.filter((item) => item.type === type)[0];
+export const getAllTypeData = () => {
+  return typeList;
+};
+
+export const getCustomeTypeData = (keys) => {
+  return typeList.map((item) => {
+    let filteredItem = {};
+    keys.forEach((key) => {
+      if (key in item) {
+        filteredItem[key] = item[key];
+      }
+    });
+    return filteredItem;
+  });
+};
+
+export const getTypeData = (target, value) => {
+  return typeList.filter((item) => item[target] === value)[0];
 };

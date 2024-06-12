@@ -28,36 +28,7 @@ const years = [
   { value: '2040', label: '2040' },
 ];
 
-export default function Filter({ defaultDate, handleDateChange }) {
-  const [activeTab, setActiveTab] = useState('all');
-
-  const tabs = [
-    {
-      id: 1,
-      name: '全部',
-      value: 'all',
-    },
-    {
-      id: 2,
-      name: '一個月',
-      value: 'month',
-    },
-    {
-      id: 3,
-      name: '一年',
-      value: 'year',
-    },
-    {
-      id: 4,
-      name: '自訂',
-      value: 'custom',
-    },
-  ];
-
-  const handleTabsClick = (value) => {
-    setActiveTab(value);
-  };
-
+export default function Filter({ activeTab, tabs, handleTabsClick, defaultDate, handleDateChange }) {
   return (
     <div className={styles.wrapper}>
       <Tabs tabs={tabs} handleClick={handleTabsClick} activeTab={activeTab} />

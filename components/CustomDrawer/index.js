@@ -1,6 +1,5 @@
 import vaulStyles from '@/styles/vaul.module.css';
 import { Drawer } from 'vaul';
-import { RxDividerHorizontal } from 'react-icons/rx';
 
 export default function CustomDrawer({ children, bar }) {
   return (
@@ -9,7 +8,6 @@ export default function CustomDrawer({ children, bar }) {
       <Drawer.Content className={vaulStyles.content}>
         {bar && <div className={vaulStyles.bar}></div>}
         {children}
-        <div style={{ minHeight: '200vh' }}></div>
       </Drawer.Content>
     </Drawer.Portal>
   );

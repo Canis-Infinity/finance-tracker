@@ -1,0 +1,152 @@
+.wrapper {
+  width: max-content;
+  border-radius: 1rem;
+  border: var(--border-size) solid var(--border);
+  transition: all 0.2s linear;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.wrapper:has(input:active) {
+  opacity: 0.8;
+}
+
+.wrapper:has(input:disabled) {
+  opacity: 0.5;
+}
+
+.wrapper:focus-within {
+  border-color: var(--theme-primary) !important;
+}
+
+.wrapper input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+
+.wrapper label {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.wrapper.food {
+  color: var(--food-text);
+  background-color: var(--food-bg);
+  border-color: var(--food-bg);
+}
+
+.wrapper.traffic {
+  color: var(--traffic-text);
+  background-color: var(--traffic-bg);
+  border-color: var(--traffic-bg);
+}
+
+.wrapper.shopping {
+  color: var(--shopping-text);
+  background-color: var(--shopping-bg);
+  border-color: var(--shopping-bg);
+}
+
+.wrapper.entertainment {
+  color: var(--entertainment-text);
+  background-color: var(--entertainment-bg);
+  border-color: var(--entertainment-bg);
+}
+
+.wrapper.travel {
+  color: var(--travel-text);
+  background-color: var(--travel-bg);
+  border-color: var(--travel-bg);
+}
+
+.wrapper.medical {
+  color: var(--medical-text);
+  background-color: var(--medical-bg);
+  border-color: var(--medical-bg);
+}
+
+.wrapper.insurance {
+  color: var(--insurance-text);
+  background-color: var(--insurance-bg);
+  border-color: var(--insurance-bg);
+}
+
+.wrapper.tuition {
+  color: var(--tuition-text);
+  background-color: var(--tuition-bg);
+  border-color: var(--tuition-bg);
+}
+
+.wrapper.rent {
+  color: var(--rent-text);
+  background-color: var(--rent-bg);
+  border-color: var(--rent-bg);
+}
+
+.wrapper.internet {
+  color: var(--internet-text);
+  background-color: var(--internet-bg);
+  border-color: var(--internet-bg);
+}
+
+.wrapper.phone {
+  color: var(--phone-text);
+  background-color: var(--phone-bg);
+  border-color: var(--phone-bg);
+}
+
+.wrapper.sports {
+  color: var(--sports-text);
+  background-color: var(--sports-bg);
+  border-color: var(--sports-bg);
+}
+
+.wrapper.salary {
+  color: var(--salary-text);
+  background-color: var(--salary-bg);
+  border-color: var(--salary-bg);
+}
+
+.wrapper.bonus {
+  color: var(--bonus-text);
+  background-color: var(--bonus-bg);
+  border-color: var(--bonus-bg);
+}
+
+.wrapper.other {
+  color: var(--other-text);
+  background-color: var(--other-bg);
+  border-color: var(--other-bg);
+}
+
+/* Mobile */
+@media (max-width: 480px) {}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 760px) {}
+
+/* Large tablet */
+@media (min-width: 761px) and (max-width: 1440px) {
+  .wrapper:hover {
+    opacity: 0.9;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1441px) {
+  .wrapper:hover {
+    opacity: 0.9;
+  }
+}

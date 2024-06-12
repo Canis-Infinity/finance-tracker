@@ -1,7 +1,13 @@
 'use client';
 import { useState } from 'react';
-import styles from './index.module.css';
+import { Roboto_Mono } from 'next/font/google';
 import clsx from 'clsx';
+import styles from './index.module.css';
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+});
 
 export default function Input({
   type,
@@ -58,7 +64,7 @@ export default function Input({
       data-mobile={mobile}
       data-desktop={desktop}
     >
-      {left && <div className={styles.left}>{left}</div>}
+      {left && <div className={clsx(styles.left, robotoMono.className)}>{left}</div>}
       <input
         className={clsx(styles.input)}
         type={type}
@@ -76,7 +82,7 @@ export default function Input({
         max={max}
       />
       {kbd && <kbd>{kbd}</kbd>}
-      {right && <div className={styles.right} onClick={passWordToggle} style={passWordToggle ? {pointerEvents: 'all'} : {}}>{right}</div>}
+      {right && <div className={clsx(styles.right, robotoMono.className)} onClick={passWordToggle} style={passWordToggle ? {pointerEvents: 'all'} : {}}>{right}</div>}
     </div>
   );
 }

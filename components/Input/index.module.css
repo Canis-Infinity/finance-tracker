@@ -87,6 +87,15 @@
   color: var(--font-color);
 }
 
+.input[type="number"] {
+  text-align: end;
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /* Mobile */
 @media (max-width: 480px) {}
 

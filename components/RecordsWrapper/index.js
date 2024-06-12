@@ -1,9 +1,11 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import clsx from 'clsx';
 import styles from './index.module.css';
-import Table from '@/components/Table';
 import Filter from '@/components/Filter';
+import LineChart from '@/components/LineChart';
+import Table from '@/components/Table';
+import DataStatus from '@/components/DataStatus';
 import { getTypeData } from '@/utils/getTypeData';
 import { getSortedData } from '@/utils/getSortedData';
 
@@ -15,7 +17,7 @@ const columns = {
     },
     {
       key: 'amount',
-      title: '金額',
+      title: '數量',
     },
     {
       key: 'price',
@@ -45,11 +47,14 @@ const config = {
       type: {
         alignment: 'start',
         isBadge: (value) => {
-          const data = getTypeData(value);
+          const data = getTypeData('type', value);
           return {
             icon: data.icon,
-            className: data.className,
+            className: data.type,
           };
+        },
+        format: (value) => {
+          return getTypeData('type', value)?.content;
         },
       },
       amount: {
@@ -91,30 +96,67 @@ const config = {
   },
 };
 
+const tabs = [
+  {
+    id: 1,
+    name: '一個月',
+    value: 'month',
+  },
+  {
+    id: 2,
+    name: '一年',
+    value: 'year',
+  },
+  {
+    id: 3,
+    name: '自訂',
+    value: 'custom',
+  },
+];
+
 const defaultSort = { key: 'type', order: 'desc' };
 
 export default function RecordsWrapper({ defaultData, defaultDate }) {
-  const [data, setData] = useState([]);
+  const [activeTab, setActiveTab] = useState('month');
+
+  const handleTabsClick = (value) => {
+    setActiveTab(value);
+  };
+
+  const [lineChartData, setLineChartData] = useState({});
+  const [tableData, setTableData] = useState([]);
   const [sort, setSort] = useState({ key: 'type', order: 'desc' });
   const [date, setDate] = useState(defaultDate);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    setData(defaultData);
+    setTableData(defaultData.tableData);
     setIsLoading(false);
   }, [defaultData]);
+
+  useEffect(() => {
+    if (activeTab === 'month') {
+      setLineChartData(defaultData.lineChartData.data1);
+    } else {
+      setLineChartData(defaultData.lineChartData.data2);
+    }
+  }, [defaultData, activeTab]);
 
   const handleClick = () => {};
 
   const handleSort = (key) => {
-    setSort(prev => ({
+    setSort((prev) => ({
       key: key,
-      order: prev.key === key ? (prev.order === 'asc' ? 'desc' : 'asc') : 'desc',
+      order:
+        prev.key === key ? (prev.order === 'asc' ? 'desc' : 'asc') : 'desc',
     }));
   };
 
-  const sortedData = useMemo(() => getSortedData(data, sort.key, sort.order), [data, sort]);
+  const sortedData = useMemo(
+    () => getSortedData(tableData, sort.key, sort.order),
+    [tableData, sort]
+  );
 
   const handleDateChange = (value) => {
     setDate(value);
@@ -126,7 +168,28 @@ export default function RecordsWrapper({ defaultData, defaultDate }) {
 
   return (
     <>
-      <Filter defaultDate={date} handleDateChange={handleDateChange} />
+      <Filter
+        activeTab={activeTab}
+        tabs={tabs}
+        handleTabsClick={handleTabsClick}
+        defaultDate={date}
+        handleDateChange={handleDateChange}
+      />
+      <Suspense
+        fallback={<DataStatus content="載入中..." type="loading" />}
+      ></Suspense>
+      {activeTab === 'month' ? (
+        <LineChart
+          chartData={lineChartData}
+          activeTab={activeTab}
+        />
+      ) : (
+        <LineChart
+          chartData={lineChartData}
+          activeTab={activeTab}
+
+        />
+      )}
       <Table
         data={sortedData}
         columns={columns}
