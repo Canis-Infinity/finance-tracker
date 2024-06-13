@@ -1,8 +1,8 @@
 export const metadata = {
-  metadataBase: new URL('https://finance-tracker.iistw.com'),
+  metadataBase: new URL('https://ft.iistw.com'),
   title: '登入',
   description: '這是我自用的記帳 App',
-  manifest: "https://finance-tracker.iistw.com/manifest.json",
+  manifest: "https://ft.iistw.com/manifest.json",
   keywords: [
     '記帳 App｜Infinity 資訊',
     '記帳 App',
