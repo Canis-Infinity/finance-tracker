@@ -1,5 +1,5 @@
-import TopNav from '@/components/TopNav';
-import BtnNav from '@/components/BtnNav';
+import TopNavigator from '@/components/TopNavigator';
+import BtnNavigator from '@/components/BtnNavigator';
 import Footer from '@/components/Footer';
 
 export const metadata = {
@@ -78,12 +78,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <TopNav />
+      <TopNavigator />
       <main>
         {children}
       </main>
       <Footer />
-      <BtnNav />
+      <BtnNavigator />
     </>
   );
 }

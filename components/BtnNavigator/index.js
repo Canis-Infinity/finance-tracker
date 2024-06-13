@@ -11,7 +11,7 @@ import { RiAddLargeLine } from 'react-icons/ri';
 import Modal from '@/components/Modal';
 import CreateRecordForm from '@/components/CreateRecordForm';
 
-export default function BtnNav() {
+export default function BtnNavigator() {
   const router = useRouter();
   const pathname = usePathname();
 

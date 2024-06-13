@@ -15,7 +15,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { navItems } from '@/utils/getNavItems';
 
-export default function TopNav() {
+export default function TopNavigator() {
   const { theme, setTheme } = useTheme();
 
   const handleThemeToggle = () => {
